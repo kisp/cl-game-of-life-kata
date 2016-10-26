@@ -1,11 +1,11 @@
 ;;; -*- Mode:Lisp; Syntax:ANSI-Common-Lisp; Coding:utf-8 -*-
 
 (defpackage :gol
-  (:use :cl :myam))
+  (:use :cl :5am))
 
 (in-package :gol)
 
-(defsuite* :gol)
+(in-suite* :gol)
 
 (defvar *rules* nil)
 
@@ -49,23 +49,23 @@
     :alive-neighbours (= 3)
     :next :alive)
 
-(deftest find-rule.1
+(test find-rule.1
   (finishes (find-rule 'rule1)))
 
-(deftest find-rule.2
+(test find-rule.2
   (is (eql 'rule1
 	   (name (find-rule 'rule1))))
   (is (eql 'rule2
 	   (name (find-rule 'rule2)))))
 
-(deftest call-rule.1
+(test call-rule.1
   (let ((r (find-rule 'rule1)))
     (is-true (rule-applicable-p r :alive 0))))
 
-(deftest call-rule.2
+(test call-rule.2
   (let ((r (find-rule 'rule1)))
     (is-false (rule-applicable-p r :alive 5))))
 
-(deftest call-rule.3
+(test call-rule.3
   (let ((r (find-rule 'rule4)))
     (is-true (rule-applicable-p r :dead 3))))

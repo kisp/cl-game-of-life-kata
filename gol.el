@@ -5,7 +5,7 @@
   (slime-eval-async
       `(cl:progn
 	(cl:load ,(buffer-file-name (get-buffer "gol.lisp")))
-	(myam:run! :gol))
+	(5am:run! :gol))
     (lambda (result)
       (message "done: %s" result))))
 
